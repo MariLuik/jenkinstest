@@ -1,15 +1,20 @@
-pipeline{
+pipeline{    
     agent any
     stages{
-        stage('Unit and integration tests'){
+        stage('Build'){
             steps{
-                echo 'Running unit tests using JUnit'
+                echo "Build Start and Complete"
             }
-        }    
-        stage("Build"){
+        }
+        stage('Test'){
             steps{
-                echo "Building the code using Maven"
-            } 
+                echo "Test Start and Complete"
+            }
+        }
+        stage('Deploy'){
+            steps{
+                echo "Deployment Start and Complete"
+            }
         }
     }
 }

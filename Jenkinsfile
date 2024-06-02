@@ -1,5 +1,3 @@
-// Jenkinsfile task 6.1P Mari Luik
-
 pipeline{
     agent any
     environment{

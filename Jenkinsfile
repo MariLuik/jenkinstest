@@ -6,26 +6,17 @@ pipeline{
         PRODUCTION_ENVIRONMENT= "Mari"
     }
     stages{
-        stage('Build'){
+        stage("Build"){
             steps{
-                echo "fetch the source code from the directory path specified by the environment variable"
-                echo "compile the code and generate any necessary artifacts"
+                echo "Building the code using Maven"
             }
-        }
-        stage('Test'){
-            steps{
-                echo "unit tests"
-                echo "integration tests"
-            }
-        }
-        stage('Code Quality Check'){
-            steps{
-                echo "check the quality of the code"
-            }
-        }
-        stage('Deploy'){
-            steps{
-                echo "deploy the application to a testing environment specified by the environment variable"
+              post{
+                success{
+                    mail to: "mariluik@gmail.com",
+                    subject: "Unit and integration test status Email",
+                    body: "Unit and integration testing has been successfully completed!"
+                }
+     
             }
         }
     }

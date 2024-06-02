@@ -1,22 +1,20 @@
-pipeline{    
+pipeline{
     agent any
       triggers {
-    githubPush()
-  }
+         githubPush()
+         }
     stages{
-        stage('Build'){
+        stage("Build"){
             steps{
-                echo "Build Start and Complete"
+                echo "Building the code using Maven"
             }
-        }
-        stage('Test'){
-            steps{
-                echo "Test Start and Complete"
-            }
-        }
-        stage('Deploy'){
-            steps{
-                echo "Deployment Start and Complete"
+              post{
+                success{
+                    mail to: "mariluik@gmail.com",
+                    subject: "GIT and integration test status Email",
+                    body: "GIT and integration testing has been successfully completed!"
+                }
+     
             }
         }
     }

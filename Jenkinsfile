@@ -1,4 +1,4 @@
-// Jenkinsfile task 6.1P Mari Luik
+// Jenkinsfile task 6.1C Mari Luik
 
 pipeline {
     agent any
